@@ -22,7 +22,7 @@ export function authenticateHandler(
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
-    return next(new ApiError("No autorizado", 401));
+    return next(new ApiError("Not authorized", 401));
   }
 
   try {
@@ -37,6 +37,6 @@ export function authenticateHandler(
     req.userRole = payload.userRole;
     next();
   } catch (error) {
-    return next(new ApiError("No autorizado", 401));
+    return next(new ApiError("Not authorized", 401));
   }
 }
